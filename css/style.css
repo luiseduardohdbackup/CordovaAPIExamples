@@ -1,0 +1,17 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+}
+
+button {
+    border: 1px solid black;
+}
+
+/* applied when a button goes down, unapplied when not button down */
+.buttonDown {
+    background: #35b5dc; /* light-blueish */
+}
