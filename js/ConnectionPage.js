@@ -13,6 +13,7 @@ var ConnectionPage = function(){
 
 ConnectionPage.prototype = {
     start: function(){
+        this._updateNetworkState();
         this.watchId = window.setInterval(function(){
             this._updateNetworkState();
         }.bind(this), 1000);
