@@ -5,13 +5,28 @@
 
 body {
     font-family: "Arial", sans-serif;
+    color: #CCCCCC;
+    background: #444444;
 }
 
 button {
-    border: 1px solid black;
+    border: none;
+    padding: 1em;
+    color: #CCCCCC;
+    border-radius: .25em;
 }
 
-/* applied when a button goes down, unapplied when not button down */
+.buttonUp {
+    background: #00CC00;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    -webkit-box-shadow: 0px .25em .5em #818181;
+    background: #555555
+}
+
 .buttonDown {
-    background: #35b5dc; /* light-blueish */
+    background: #009999; /* light-blueish */
+    margin-top: .75em;
+    margin-bottom: .25em;
+    -webkit-box-shadow: inset 0 0 .5em #000000;
 }

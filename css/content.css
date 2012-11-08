@@ -8,7 +8,8 @@ li button {
     height: 100%;
     top: 0px;
     bottom: 0px;
-
+    padding: 1em;
+    box-sizing: border-box;
 }
 
 

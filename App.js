@@ -1,13 +1,9 @@
 var App = function(){
-    window.util = new Util();
     this.setup();   
 }
 
 App.prototype = {
     setup: function(){
-
-
-        this.transitioner = new Transitioner();
 
         this.list = $('#list');
 
@@ -33,6 +29,7 @@ App.prototype = {
         this.geolocationButton = $('#gotoGeolocation');
         this.geolocationButton.onButtonTap(
                         this.createSwitchTo(this.geolocationView));
+
         document.addEventListener('backButton', this.switchBack.bind(this));
     },
     
@@ -45,18 +42,18 @@ App.prototype = {
     switchTo: function(newView){
         newView.start();
         this.currentView = newView;
-        this.transitioner.slideFromRight(this.list, newView.div);
-        this.transitioner.fadeIn(this.backButton);
+        window.util.transitioner.slideFromRight(this.list, newView.div);
+        window.util.transitioner.fadeIn(this.backButton);
     },
 
     switchBack: function(){
         if (this.currentView === undefined){
             navigator.app.exitApp();
         }
-        this.transitioner.fadeOut(this.backButton);
-        this.transitioner.slideFromLeft(this.list, this.currentView.div, function(){
+        window.util.transitioner.fadeOut(this.backButton);
+        window.util.transitioner.slideFromLeft(this.list, this.currentView.div, function(){
             this.currentView.stop();
-            delete this.currentView;
+            this.currentView = undefined;
         }.bind(this));
     }
 }

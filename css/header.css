@@ -1,18 +1,19 @@
 #header {
     height: 3em;
     width: 100%;
-    background: #ddd;
+    background: #333333;
 }
 
 #back {
     position: absolute;
-    left: 0px;
+    left: .5em;
     top: 0px;
-    margin-top: .5em;
+    padding: .5em;
     height: 2em;
 }
 
 #title {
-    line-height: 3em;
+    font-size: 1.25em;
+    line-height: 2.5em;
     text-align: center;
 }

@@ -11,6 +11,7 @@
 
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <link href="css/reset.css" rel="stylesheet" type="text/css">
+        <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
         <link href="css/header.css" rel="stylesheet" type="text/css">
         <link href="css/content.css" rel="stylesheet" type="text/css">
 
@@ -29,14 +30,26 @@
         <script src="App.js"></script>
         <script>
             document.addEventListener('deviceReady', function(){
-                new App();
+                load();
             });
-            //window.onload = function(){
-            //    new App();
-            //}
+
+            function load(){
+                window.util = new Util();
+                window.util.transitioner = new Transitioner();
+                window.util.transitioner.fadeOut($('#splashScreen'), 
+                                                 $('#splashScreen').remove);
+                new App();
+            }
+            setTimeout(function(){
+                window.Connection = {};
+                window.device = {};
+                if (window.util === undefined)
+                    load();
+            }, 1000);
         </script>
     </head>
     <body>
+        <div id="splashScreen"></div>
         <div id="header">
             <button id="back" class="faded"> back</button>
             <div id="title"> Cordova API Examples</div>
