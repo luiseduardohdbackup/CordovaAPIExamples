@@ -10,27 +10,21 @@ App.prototype = {
         this.backButton = $('#back');
         this.backButton.onButtonTap(this.switchBack.bind(this));
 
-        this.accelerometerView = new AccelerometerPage();
-        this.accelerometerButton = $('#gotoAccelerometer');
-        this.accelerometerButton.onButtonTap(
-                        this.createSwitchTo(this.accelerometerView));
+        this.pages = [];
 
-        this.connectionView = new ConnectionPage();
-        this.connectionButton = $('#gotoConnection');
-        this.connectionButton.onButtonTap(
-                        this.createSwitchTo(this.connectionView));
-
-        this.deviceView = new DevicePage();
-        this.deviceButton = $('#gotoDevice');
-        this.deviceButton.onButtonTap(
-                        this.createSwitchTo(this.deviceView));
-
-        this.geolocationView = new GeolocationPage();
-        this.geolocationButton = $('#gotoGeolocation');
-        this.geolocationButton.onButtonTap(
-                        this.createSwitchTo(this.geolocationView));
+        this.addPage(AccelerometerPage, '#gotoAccelerometer');
+        this.addPage(ConnectionPage, '#gotoConnection');
+        this.addPage(DevicePage, '#gotoDevice');
+        this.addPage(GeolocationPage, '#gotoGeolocation');
 
         document.addEventListener('backButton', this.switchBack.bind(this));
+    },
+
+    addPage: function(Constructor, buttonSelector){
+        var page = new Constructor();
+        this.pages.push(page);
+        var button = $(buttonSelector);
+        button.onButtonTap(this.createSwitchTo(page));
     },
     
     createSwitchTo: function(newView){
