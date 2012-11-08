@@ -13,6 +13,7 @@ App.prototype = {
         this.pages = [];
 
         this.addPage(AccelerometerPage, '#gotoAccelerometer');
+        this.addPage(CameraPage, '#gotoCamera');
         this.addPage(ConnectionPage, '#gotoConnection');
         this.addPage(DevicePage, '#gotoDevice');
         this.addPage(GeolocationPage, '#gotoGeolocation');

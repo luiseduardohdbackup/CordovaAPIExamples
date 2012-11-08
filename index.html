@@ -23,6 +23,7 @@
         <script src="libs/jq/addEnterJQPlugin.js"></script>
 
         <script src="js/AccelerometerPage.js"></script>
+        <script src="js/CameraPage.js"></script>
         <script src="js/ConnectionPage.js"></script>
         <script src="js/DevicePage.js"></script>
         <script src="js/GeolocationPage.js"></script>
@@ -60,6 +61,7 @@
         <div id="content" class="center">
             <ul id="list">
                 <li><button id="gotoAccelerometer"> Accelerometer </button></li>
+                <li><button id="gotoCamera"> Camera </button></li>
                 <li><button id="gotoConnection"> Connection </button></li>
                 <li><button id="gotoDevice"> Device </button></li>
                 <li><button id="gotoGeolocation"> Geolocation </button></li>
@@ -69,6 +71,11 @@
                 <div id="accelerometerX"> X:</div>
                 <div id="accelerometerY"> Y:</div>
                 <div id="accelerometerZ"> Z:</div>
+            </div>
+
+            <div id="cameraView" class="right">
+                <button id="takePicture"> Take Picture </button>
+                <image id="picture"/>
             </div>
 
             <div id="connectionView" class="right">
