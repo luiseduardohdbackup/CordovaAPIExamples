@@ -40,12 +40,15 @@
                                                  $('#splashScreen').remove);
                 new App();
             }
-            setTimeout(function(){
-                window.Connection = {};
-                window.device = {};
-                if (window.util === undefined)
+
+            function fakeCordova(){
+                if (window.util === undefined){
+                    window.Connection = {};
+                    window.device = {};
                     load();
-            }, 1000);
+                }
+            }
+            setTimeout(fakeCordova, 1000);
         </script>
     </head>
     <body>
