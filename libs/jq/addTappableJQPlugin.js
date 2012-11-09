@@ -68,18 +68,22 @@ function addTappableJQPlugin(){
         if ('ontouchstart' in document.documentElement){
 
             this.on('touchstart', function(event){
+                event.preventDefault();
                 var x = event.originalEvent.touches[0].clientX;
                 var y = event.originalEvent.touches[0].clientY;
                 down(x, y);
             });
             this.on('touchend', function(event){
+                event.preventDefault();
                 up();
             });
             // cancel on touchleave (finger moves out of object)
             this.on('touchleave', function(event){
+                event.preventDefault();
                 exit();
             });
             this.on('touchmove', function(event){
+                event.preventDefault();
                 var x = event.originalEvent.touches[0].clientX;
                 var y = event.originalEvent.touches[0].clientY;
                 move(x, y);
