@@ -1,99 +1,11 @@
 <!DOCTYPE HTML>
-<html>
-    <head>
-        <meta name='viewport' content='initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0 user-scalable=0' />
-
-        <title>
-            Cordova API Examples
-        </title>
-
-        <link href="css/transitions.css" rel="stylesheet" type="text/css">
-
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <link href="css/reset.css" rel="stylesheet" type="text/css">
-        <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
-        <link href="css/header.css" rel="stylesheet" type="text/css">
-        <link href="css/content.css" rel="stylesheet" type="text/css">
-
-        <script src="libs/cordova-2.1.0.js"></script>
-        <script src="libs/util.js"></script>
-        <script src="libs/Transitioner.js"></script>
-        <script src="libs/jq/jquery-1.8.2.min.js"></script>
-        <script src="libs/jq/addTappableJQPlugin.js"></script>
-        <script src="libs/jq/addEnterJQPlugin.js"></script>
-
-        <script src="js/AccelerometerPage.js"></script>
-        <script src="js/CameraPage.js"></script>
-        <script src="js/ConnectionPage.js"></script>
-        <script src="js/DevicePage.js"></script>
-        <script src="js/GeolocationPage.js"></script>
-
-        <script src="App.js"></script>
-        <script>
-            document.addEventListener('deviceReady', function(){
-                load();
-            });
-
-            function load(){
-                window.util = new Util();
-                window.util.transitioner = new Transitioner();
-                window.util.transitioner.fadeOut($('#splashScreen'), 
-                                                 $('#splashScreen').remove);
-                new App();
-            }
-
-            function fakeCordova(){
-                if (window.util === undefined){
-                    window.Connection = {};
-                    window.device = {};
-                    load();
-                }
-            }
-            setTimeout(fakeCordova, 1000);
-        </script>
-    </head>
-    <body>
-        <div id="splashScreen"></div>
-        <div id="header">
-            <button id="back" class="faded"> back</button>
-            <div id="title"> Cordova API Examples</div>
-        </div>
-        <div id="content" class="center">
-            <ul id="list">
-                <li><button id="gotoAccelerometer"> Accelerometer </button></li>
-                <li><button id="gotoCamera"> Camera </button></li>
-                <li><button id="gotoConnection"> Connection </button></li>
-                <li><button id="gotoDevice"> Device </button></li>
-                <li><button id="gotoGeolocation"> Geolocation </button></li>
-            </ul>
-
-            <div id="accelerometerView" class="right">
-                <div id="accelerometerX"> X:</div>
-                <div id="accelerometerY"> Y:</div>
-                <div id="accelerometerZ"> Z:</div>
-            </div>
-
-            <div id="cameraView" class="right">
-                <button id="takePicture"> Take Picture </button>
-                <image id="picture"/>
-            </div>
-
-            <div id="connectionView" class="right">
-
-            </div>
-
-            <div id="deviceView" class="right">
-                <div id="deviceName"></div>
-                <div id="deviceCordova"></div>
-                <div id="devicePlatform"></div>
-                <div id="deviceUUID"></div>
-                <div id="deviceVersion"></div>
-            </div>
-
-            <div id="geolocationView" class="right">
-
-            </div>
-        </div>
-
-    </body>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<p>Please access either <strong>ios.html</strong> or <strong>android.html</strong> directly, according to your OS.</p> 
+</body>
 </html>
