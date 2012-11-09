@@ -29,20 +29,7 @@
         <script src="js/GeolocationPage.js"></script>
 
         <script src="App.js"></script>
-        <script>
-        window.util = new Util();
-
-        function load(){
-            window.util.transitioner = new Transitioner();
-            window.util.transitioner.fadeOut($('#splashScreen'), 
-                                             $('#splashScreen').remove);
-            new App();
-        }
-    
-        document.addEventListener('deviceReady', function(){
-            load();
-        });
-        </script>
+        <script src="load.js"></script>
     </head>
     <body>
         <div id="splashScreen"></div>
