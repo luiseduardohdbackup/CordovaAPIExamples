@@ -1,6 +1,8 @@
 * {
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
+    -moz-tap-highlight-color: rgbd(0, 0, 0, 0);
+    -moz-user-select: none;
 }
 
 body {
@@ -17,11 +19,12 @@ button {
 }
 
 .buttonUp {
-    background: #00CC00;
     margin-top: .5em;
     margin-bottom: .5em;
-    -webkit-box-shadow: 0px .25em .5em #818181;
-    background: #555555
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#555555));
+    background: -webkit-linear-gradient(top, #666666, #555555);
+    background: -moz-linear-gradient(top, #666666, #555555);
+    background: linear-gradient(top, #666666, #555555);
 }
 
 .buttonDown {
@@ -29,6 +32,8 @@ button {
     margin-top: .75em;
     margin-bottom: .25em;
     -webkit-box-shadow: inset 0 0 .5em #000000;
+    -moz-box-shadow: inset 0 0 .5em #000000;
+    box-shadow: inset 0 0 .5em #000000;
 }
 
 #picture {
