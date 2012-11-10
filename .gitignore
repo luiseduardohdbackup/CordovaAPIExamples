@@ -1,1 +1,4 @@
+# comment for .gitignore
+
 *.swp
+*.un~
