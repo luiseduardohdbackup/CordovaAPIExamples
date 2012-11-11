@@ -10,7 +10,7 @@ var FilePage = function(){
 
 FilePage.prototype = {
     start: function(){
-        this.console.append("-------File View Loaded-------<br>");
+        this.console.prepend("-------File View Loaded-------<br>");
         this.readFile();
     },
     readFile: function(){
@@ -31,7 +31,7 @@ FilePage.prototype = {
     readData: function(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            this.console.append("File contents: " + evt.target.result + "<br>");
+            this.console.prepend("File contents: " + evt.target.result + "<br>");
         }.bind(this);
 
         reader.readAsText(file);
@@ -41,7 +41,7 @@ FilePage.prototype = {
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotWriteFS.bind(this), this.onWriteFail.bind(this));
     },
     onReadFail: function(evt) {
-        this.console.append("Read failed. Does a file exist?<br>");
+        this.console.prepend("Read failed. Does a file exist?<br>");
     },
     onGotWriteFS: function(fileSystem) {
         fileSystem.root.getFile("somefile.txt", { create: true }, this.onGotWriteFileEntry.bind(this), this.onWriteFail.bind(this));
@@ -50,13 +50,13 @@ FilePage.prototype = {
         fileEntry.createWriter(this.onGotWriteFile.bind(this), this.onWriteFail.bind(this));
     },
     onGotWriteFile: function(writer) {
-        this.console.append("Write succeed<br>");
+        this.console.prepend("Write succeed<br>");
         writer.write(this.strToWrite);
         this.strToWrite = "";
         this.readFile();
     },
     onWriteFail: function(evt) {
-        this.console.append("Write failed :(<br>");
+        this.console.prepend("Write failed :(<br>");
     }
 }
 
