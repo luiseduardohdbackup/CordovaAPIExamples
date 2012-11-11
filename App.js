@@ -45,6 +45,7 @@ App.prototype = {
     switchBack: function(){
         if (this.currentView === undefined){
             navigator.app.exitApp();
+            return;
         }
         window.util.transitioner.fadeOut(this.backButton);
         window.util.transitioner.slideFromLeft(this.list, this.currentView.div, function(){
