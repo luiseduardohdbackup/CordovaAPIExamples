@@ -1,33 +1,32 @@
 var FilePage = function(){
     this.div = $('#fileView');
     this.console = $('#fileConsole');
-    window.filePage = this;
+    this.writeButton = $('#writeFile');
 
-    this.shouldRun = true;
+    this.writeButton.onButtonTap(this.writeStr.bind(this));
 }
 
 
 
 FilePage.prototype = {
     start: function(){
-        this.shouldRun = true;
         this.console.append("-------File View Loaded-------<br>");
+        this.readFile();
+    },
+    readFile: function(){
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotReadFS.bind(this), this.onReadFail.bind(this));
     },
     stop: function(){
-        this.shouldRun = false;
+
     },
     onGotReadFS: function(fileSystem){
-        if (this.shouldRun)
-            fileSystem.root.getFile("somefile.txt", null, this.onGotReadFileEntry.bind(this), this.onReadFail.bind(this));
+        fileSystem.root.getFile("somefile.txt", null, this.onGotReadFileEntry.bind(this), this.onReadFail.bind(this));
     },
     onGotReadFileEntry: function(fileEntry) {
-        if (this.shouldRun)
-            fileEntry.file(this.onGotReadFile.bind(this), this.onReadFail.bind(this));
+        fileEntry.file(this.onGotReadFile.bind(this), this.onReadFail.bind(this));
     },
     onGotReadFile: function(file){
-        if (this.shouldRun)
-            this.readData(file);
+        this.readData(file);
     },
     readData: function(file) {
         var reader = new FileReader();
@@ -35,40 +34,29 @@ FilePage.prototype = {
             this.console.append("File contents: " + evt.target.result + "<br>");
         }.bind(this);
 
-        if (this.shouldRun)
-            reader.readAsText(file);
+        reader.readAsText(file);
     },
     writeStr: function() {
         this.strToWrite = $('#textfield').val();
-        if (this.shouldRun)
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotWriteFS.bind(this), this.onWriteFail.bind(this));
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotWriteFS.bind(this), this.onWriteFail.bind(this));
     },
     onReadFail: function(evt) {
-        if (this.shouldRun) {
-            this.console.append("Read failed. Does a file exist?<br>");
-        }
+        this.console.append("Read failed. Does a file exist?<br>");
     },
     onGotWriteFS: function(fileSystem) {
-        if (this.shouldRun)
-            fileSystem.root.getFile("somefile.txt", { create: true }, this.onGotWriteFileEntry.bind(this), this.onWriteFail.bind(this));
+        fileSystem.root.getFile("somefile.txt", { create: true }, this.onGotWriteFileEntry.bind(this), this.onWriteFail.bind(this));
     },
     onGotWriteFileEntry: function(fileEntry) {
-        if (this.shouldRun)
-            fileEntry.createWriter(this.onGotWriteFile.bind(this), this.onWriteFail.bind(this));
+        fileEntry.createWriter(this.onGotWriteFile.bind(this), this.onWriteFail.bind(this));
     },
     onGotWriteFile: function(writer) {
-        if (this.shouldRun) {
-            this.console.append("Write succeed<br>");
-            writer.write(this.strToWrite);
-            this.strToWrite = "";
-        }
+        this.console.append("Write succeed<br>");
+        writer.write(this.strToWrite);
+        this.strToWrite = "";
+        this.readFile();
     },
     onWriteFail: function(evt) {
-        if (this.shouldRun) {
-            this.console.append("Write failed :(<br>");
-        }
+        this.console.append("Write failed :(<br>");
     }
 }
-
-action="javascript:submitTheForm()"
 

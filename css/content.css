@@ -1,4 +1,4 @@
-li button {
+#content button {
     width: 100%;
 }
 
@@ -24,3 +24,7 @@ li button {
     bottom: 0em;
 }
 
+#fileView > input {
+    width: 100%;
+    font-size: 1.5em;
+}
