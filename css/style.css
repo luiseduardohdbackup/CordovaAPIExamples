@@ -5,6 +5,10 @@
     -moz-user-select: none;
 }
 
+input {
+    -webkit-user-select: text;
+}
+
 body {
     font-family: "Arial", sans-serif;
     color: #CCCCCC;
