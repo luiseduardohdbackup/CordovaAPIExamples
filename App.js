@@ -17,6 +17,7 @@ App.prototype = {
         this.addPage(ConnectionPage, '#gotoConnection');
         this.addPage(DevicePage, '#gotoDevice');
         this.addPage(GeolocationPage, '#gotoGeolocation');
+        this.addPage(FilePage, '#gotoFile');
 
         document.addEventListener('backButton', this.switchBack.bind(this));
     },
