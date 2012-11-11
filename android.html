@@ -76,7 +76,11 @@
             </div>
 
             <div id="fileView" class="right">
-
+                <form id="inputForm" name="myform" action='javascript:window.filePage.writeStr()'>
+                    <input id="textfield" name="Text" type="text">
+                    <input name="Submit"  type="submit" value="Write to file"/>
+                </form>
+                <p id="fileConsole"></p>
             </div>
         </div>
 

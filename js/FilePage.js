@@ -1,14 +1,21 @@
 var FilePage = function(){
     this.div = $('#fileView');
+    this.console = $('#fileConsole');
+    window.filePage = this;
+
     this.shouldRun = true;
 }
 
+
+
 FilePage.prototype = {
     start: function(){
+        this.shouldRun = true;
+        this.console.append("-------File View Loaded-------<br>");
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotReadFS.bind(this), this.onReadFail.bind(this));
     },
     stop: function(){
-
+        this.shouldRun = false;
     },
     onGotReadFS: function(fileSystem){
         if (this.shouldRun)
@@ -25,16 +32,20 @@ FilePage.prototype = {
     readData: function(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            this.div.text("File contents: " + evt.target.result);
+            this.console.append("File contents: " + evt.target.result + "<br>");
         }.bind(this);
 
         if (this.shouldRun)
             reader.readAsText(file);
     },
+    writeStr: function() {
+        this.strToWrite = $('#textfield').val();
+        if (this.shouldRun)
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotWriteFS.bind(this), this.onWriteFail.bind(this));
+    },
     onReadFail: function(evt) {
         if (this.shouldRun) {
-            this.div.append("Read failed, attempting to write<br>");
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotWriteFS.bind(this), this.onWriteFail.bind(this));
+            this.console.append("Read failed. Does a file exist?<br>");
         }
     },
     onGotWriteFS: function(fileSystem) {
@@ -47,14 +58,17 @@ FilePage.prototype = {
     },
     onGotWriteFile: function(writer) {
         if (this.shouldRun) {
-            this.div.append("Write succeed<br>");
-            writer.write("Some arbitrary data");
+            this.console.append("Write succeed<br>");
+            writer.write(this.strToWrite);
+            this.strToWrite = "";
         }
     },
     onWriteFail: function(evt) {
         if (this.shouldRun) {
-            this.div.append("Write failed :(<br>");
+            this.console.append("Write failed :(<br>");
         }
     }
 }
+
+action="javascript:submitTheForm()"
 
