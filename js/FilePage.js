@@ -5,11 +5,10 @@ var FilePage = function(){
 
 FilePage.prototype = {
     start: function(){
-        if (this.shouldRun)
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotReadFS.bind(this), this.onReadFail.bind(this));
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onGotReadFS.bind(this), this.onReadFail.bind(this));
     },
     stop: function(){
-        this.shouldRun = false;
+
     },
     onGotReadFS: function(fileSystem){
         if (this.shouldRun)
